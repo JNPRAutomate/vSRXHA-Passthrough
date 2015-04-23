@@ -67,7 +67,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  config.vm.define "srx" do |srx|
+  config.vm.define "srx-node0" do |srx|
     srx.vm.box = "juniper/ffp-12.1X47-D20.7"
     srx.vm.hostname = "vSRX"
     srx.vm.network "private_network",
@@ -102,7 +102,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     #
-    srx.vm.provision "file", source: "vSRX-configs/inital.cfg", destination: "/cf/root/inital.cfg"
+    srx.vm.provision "file", source: "vSRX-configs/node0-provision.cfg", destination: "/cf/root/node0-provision.cfg"
     srx.vm.provision "file", source: "vSRX-configs/nopolicy.cfg", destination: "/cf/root/nopolicy.cfg"
     srx.vm.provision :host_shell do |host_shell|
       # provides the inital configuration
