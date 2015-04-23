@@ -106,7 +106,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     srx.vm.provision "file", source: "vSRX-configs/nopolicy.cfg", destination: "/cf/root/nopolicy.cfg"
     srx.vm.provision :host_shell do |host_shell|
       # provides the inital configuration
-      host_shell.inline = 'vagrant ssh srx -c "/usr/sbin/cli -f /cf/root/inital.cfg"'
+      host_shell.inline = 'vagrant ssh srx-node0 -c "/usr/sbin/cli -f /cf/root/inital.cfg"'
     end
   end
 end
